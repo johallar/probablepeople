@@ -110,6 +110,49 @@ Your patches are welcome. Here's our suggested workflow:
 * Add your labeled examples.
 * Send us a pull request with a description of your work.
 
+## NCAA
+To re-train and re-package the ncaa name model
+
+### Setup
+Follow the setup instructions above:
+  ```
+  git clone https://github.com/datamade/probablepeople.git  
+  cd probablepeople  
+  pip install -r requirements.txt  
+  python setup.py develop
+  make all
+  nosetests .  
+  ```
+
+### Training
+* Training names are just copy/pasted from several teams into the `team_data/unlabeled/ncaa.csv` file
+* Run `parserator label team_data/unlabeled/ncaa.csv team_data/labeled/ncaa.xml probablepeople` 
+> You can skip the ones you didn't add as they are already part of the model
+* Generate a new model by running the following, this will generate a new csr file 
+  ```
+  parserator train name_data/labeled/ncaa.xml probablepeople --modelfile=person
+  ```
+
+### Testing
+* Test your new model by running
+```
+python setup.py develop
+```
+* Run python, import probablepeople and start tagging names to see if it has changed
+```
+python
+import probablepeople as pp
+pp.tag('new name, that is, crazy')
+```
+
+### Packaging
+* Create a wheel by running
+```
+python setup.py sdist bdist_wheel
+```
+
+> This is then copied to the `/external` folder of crossover
+
 ### Copyright
 
 Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/probablepeople/blob/master/LICENSE).
