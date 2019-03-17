@@ -125,12 +125,15 @@ Follow the setup instructions above:
   ```
 
 ### Training
-* Training names are just copy/pasted from several teams into the `team_data/unlabeled/ncaa.csv` file
-* Run `parserator label team_data/unlabeled/ncaa.csv team_data/labeled/ncaa.xml probablepeople` 
+* Training names are just copy/pasted from several teams into the `name_data/unlabeled/ncaa.csv` file
+* Run 
+  ```
+  parserator label name_data/unlabeled/ncaa.csv name_data/labeled/ncaa.xml probablepeople
+  ``` 
 > You can skip the ones you didn't add as they are already part of the model
 * Generate a new model by running the following, this will generate a new csr file 
   ```
-  parserator train name_data/labeled/ncaa.xml probablepeople --modelfile=person
+  parserator train name_data/labeled/person_labeled.xml,name_data/labeled/ncaa.xml probablepeople --modelfile=person
   ```
 
 ### Testing
