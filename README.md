@@ -133,7 +133,7 @@ Follow the setup instructions above:
 > You can skip the ones you didn't add as they are already part of the model
 * Generate a new model by running the following, this will generate a new csr file 
   ```
-  parserator train name_data/labeled/person_labeled.xml,name_data/labeled/ncaa.xml probablepeople --modelfile=person
+parserator train name_data/labeled/person_labeled.xml,name_data/labeled/ncaa.xml,name_data/labeled/ncaa_toughies.xml probablepeople --modelfile=person
   ```
 
 ### Testing
